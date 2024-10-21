@@ -1,3 +1,4 @@
+import logging
 from django.shortcuts import get_object_or_404
 from rest_framework.parsers import JSONParser
 from rest_framework.decorators import api_view
@@ -5,11 +6,15 @@ from myapp.models.userModel import UserModel
 from myapp.dto.userDTO import userDTO
 from myapp.response.helper import BaseResponse
 
+# Configure logging
+logger = logging.getLogger(__name__)
+
 @api_view(['GET', 'PUT'])
 def getUsers(request):
     if request.method == 'GET':
         users = UserModel.objects.all()
         response = userDTO(users, many=True)
+        logger.info('[UserController] - Fetched all user successfully.', extra={'data': response.data})
         return BaseResponse('success', 'Successfully fetched users', response.data)
      
     elif request.method == 'PUT':
