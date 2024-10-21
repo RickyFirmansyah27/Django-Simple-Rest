@@ -3,3 +3,4 @@ pymysql
 djangorestframework
 django-cors-headers
 python-decouple
+cryptography
