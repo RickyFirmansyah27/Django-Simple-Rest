@@ -1,15 +1,20 @@
+import logging
 from django.shortcuts import get_object_or_404
 from rest_framework.parsers import JSONParser
 from rest_framework.decorators import api_view
 from myapp.models.productModel import ProductModel
-from myapp.dto.productDTO import productDTO 
+from myapp.dto.productDTO import productDTO
 from myapp.response.helper import BaseResponse
+
+# Configure logging
+logger = logging.getLogger(__name__)
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def getProducts(request):
     if request.method == 'GET':
         products = ProductModel.objects.all()
         response = productDTO(products, many=True)
+        logger.info('[ProductController] - Fetched all products successfully.', extra={'data': response.data})
         return BaseResponse('success', 'Successfully fetched products', response.data)
 
     elif request.method == 'PUT':
@@ -22,7 +27,6 @@ def getProducts(request):
         product.save()
 
         response = productDTO(product)
-
         return BaseResponse('success', 'Successfully updated product', response.data)
 
     elif request.method == 'DELETE':
@@ -30,12 +34,11 @@ def getProducts(request):
         product = get_object_or_404(ProductModel, id=data.get('id'))
 
         product.delete()
-
         return BaseResponse('success', 'Successfully deleted product', None)
 
 @api_view(['GET'])
 def getProductById(request, product_id):
     product = get_object_or_404(ProductModel, id=product_id)
     response = productDTO(product)
-    
+    logger.info('[ProductController] - Successfully fetched product by ID', extra={'data': response.data})
     return BaseResponse('success', 'Successfully fetched product', response.data)
