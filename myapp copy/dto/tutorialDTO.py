@@ -1,12 +1,12 @@
 from rest_framework import serializers 
-from myapp.models.tutorialModel import TutorialModel
+from myapp.models.productModel import ProductModel
  
  
 class tutorialDTO(serializers.ModelSerializer):
  
     class Meta:
-        model = TutorialModel
+        model = ProductModel
         fields = ('id',
-                  'title',
+                  'name',
                   'description',
-                  'published')
+                  'price')
