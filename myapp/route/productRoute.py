@@ -3,5 +3,5 @@ from myapp.controller import productController
 
 urlpatterns = [
     path('api/products', productController.getProducts, name='product-list'),
-    path('products/<int:product_id>/', productController.getProductById, name='get_product_by_id'),
+    path('api/products/<int:product_id>/', productController.getProductById, name='get_product_by_id'),
 ]
