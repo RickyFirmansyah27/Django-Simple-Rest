@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     # Django REST framework 
     'rest_framework',
     # Tutorials application 
-    'tutorials.apps.TutorialsConfig',
+    'myapp.apps.MyappConfig',
     # CORS
     'corsheaders',
 ]
@@ -60,7 +60,7 @@ CORS_ORIGIN_WHITELIST = (
     'http://localhost:8081',
 )
 
-ROOT_URLCONF = 'myapp.urls'
+ROOT_URLCONF = 'server.urls'
 
 TEMPLATES = [
     {
@@ -78,7 +78,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'myapp.wsgi.application'
+WSGI_APPLICATION = 'server.wsgi.application'
 
 
 # Database

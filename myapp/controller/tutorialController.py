@@ -4,9 +4,8 @@ from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser 
 from rest_framework import status
  
-# from tutorials.model import Tutorial
-from tutorials.models.tutorialModel import TutorialModel
-from tutorials.dto.tutorialDTO import tutorialDTO 
+from myapp.models.tutorialModel import TutorialModel
+from myapp.dto.tutorialDTO import tutorialDTO 
 from rest_framework.decorators import api_view
 
 

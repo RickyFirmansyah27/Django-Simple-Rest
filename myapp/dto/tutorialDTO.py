@@ -1,5 +1,5 @@
 from rest_framework import serializers 
-from tutorials.models.tutorialModel import TutorialModel
+from myapp.models.tutorialModel import TutorialModel
  
  
 class tutorialDTO(serializers.ModelSerializer):

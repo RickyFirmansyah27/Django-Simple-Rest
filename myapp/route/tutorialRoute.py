@@ -1,5 +1,5 @@
 from django.urls import path
-from tutorials.controller import tutorialController
+from myapp.controller import tutorialController
 
 urlpatterns = [
     path('api/tutorials', tutorialController.tutorial_list, name='tutorial-list'),
