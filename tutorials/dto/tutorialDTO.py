@@ -1,11 +1,11 @@
 from rest_framework import serializers 
-from tutorials.models import Tutorial
+from tutorials.models.tutorialModel import TutorialModel
  
  
-class TutorialSerializer(serializers.ModelSerializer):
+class tutorialDTO(serializers.ModelSerializer):
  
     class Meta:
-        model = Tutorial
+        model = TutorialModel
         fields = ('id',
                   'title',
                   'description',
